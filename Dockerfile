@@ -26,7 +26,7 @@ RUN echo "--- Install Dependencies ---" \
         && dpkg -i cassandra-cpp-driver_2.15.0-1_amd64.deb \
         && dpkg -i cassandra-cpp-driver-dev_2.15.0-1_amd64.deb \
     && echo "--- Installing Cassandra ---" \
-        && git clone -b v1.3.6 https://github.com/TahsinAbrar/cassandra-php-driver.git $CASSANDRA_INSTALL_DIR \
+        && git clone -b v1.3.x https://github.com/nano-interactive/php-driver.git $CASSANDRA_INSTALL_DIR \
         && cd $CASSANDRA_INSTALL_DIR \
         && cd ext \
         && phpize \
