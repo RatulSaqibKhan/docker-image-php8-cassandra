@@ -1,6 +1,6 @@
-FROM ratulsaqibkhan/php8-swoole:1.0.0
+FROM ratulsaqibkhan/php8-swoole:2.0.0
 
-ARG APT_CASSANDRA_DEPENDENCIES="git wget multiarch-support libgmp-dev"
+ARG APT_CASSANDRA_DEPENDENCIES="git wget libgmp-dev"
 
 # Cassandra
 ENV CASSANDRA_PHP_DRIVER_VERSION="1.3.2" \
@@ -11,6 +11,8 @@ USER root
 RUN echo "--- Install Dependencies ---" \
         && apt-get update \
         && apt-get install -y ${APT_CASSANDRA_DEPENDENCIES} \
+        && wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/multiarch-support_2.27-3ubuntu1_amd64.deb \
+        && apt-get install ./multiarch-support_2.27-3ubuntu1_amd64.deb \
     && echo "--- Setup Additional Cassandra Dependencies ---" \
         && mkdir -p /tmp/deps \
         && cd /tmp/deps \
